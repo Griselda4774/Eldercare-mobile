@@ -52,7 +52,7 @@ class SettingPage extends StatelessWidget {
                         showDialog(
                             context: context,
                             builder: (_) =>
-                                const WarningAlert(cameraName: 'living room'),
+                                const WarningAlert(cameraName: 'Camera 1'),
                             barrierDismissible: false);
                       }),
                 ),

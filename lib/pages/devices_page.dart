@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:eldercare/components/video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:eldercare/components/clock_running.dart';
@@ -80,37 +81,7 @@ class DevicesPage extends StatelessWidget {
                               color: Color(0xFF39A7FF),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8.0))),
-                          child: Image.asset('assets/images/test_img.png')),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Stack(
-                              children: [
-                                Text(
-                                  'Living Room',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                      foreground: Paint()
-                                        ..style = PaintingStyle.stroke
-                                        ..strokeWidth = 4
-                                        ..color = Colors.black),
-                                ),
-                                const Text(
-                                  'Living Room',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                      color: Colors.white),
-                                ),
-                              ],
-                            ),
-                            const ClockRunning()
-                          ],
-                        ),
-                      ),
+                          child: const VideoPlayerWidget()),
                     ],
                   )
                 ],
