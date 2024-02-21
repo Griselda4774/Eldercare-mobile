@@ -1,4 +1,4 @@
-# Eldercare
+# ElderCare
 
 ElderCare is a mobile application integrated with Home Camera, designed for elderly care by swiftly detecting falls and promptly notifying caregivers or family members.
 
