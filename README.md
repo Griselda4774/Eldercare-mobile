@@ -1,16 +1,36 @@
 # Eldercare
 
-A new Flutter project.
+ElderCare is a mobile application integrated with Home Camera, designed for elderly care by swiftly detecting falls and promptly notifying caregivers or family members.
+
+## Video Project
+
+**Video:** [Youtube](https://www.youtube.com/watch?v=dkdzTnIheRg)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run any Android application built with Flutter you need to configure the enviroments in your machine, you can do this following the the tutorial provided by Google in [Flutter website](https://flutter.dev/docs/get-started/install)
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter SDK
+- Android Studio (to download Android SDK)
+- Xcode (for iOS develop only)
+- Any IDE with Flutter SDK installed (ie. IntelliJ, Android Studio, VSCode etc)
+- A little knowledge of Dart and Flutter
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Technologies
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter
+- Google Cloud
+- Firebase Google Auth (Comming soon)
+- Machine Learning
+
+## Setup
+
+1. Clone the repository
+2. Open the project in your preferred IDE (e.g. Android Studio, VS Code)
+3. Run `flutter pub get` to install the required dependencies
+4. Run the project in an emulator or on a physical device
+
+## Runing the code
+
+1. Navigate to the root folder of the Eldercare project in your terminal.
+2. Execute the command `flutter run` to launch the application on your connected device.
