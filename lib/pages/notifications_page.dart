@@ -13,6 +13,13 @@ class NotificationsPage extends StatelessWidget {
     {'cameraName': 'Living Room', 'time': '10:00 AM', 'isRead': false},
     {'cameraName': 'Bedroom', 'time': '11:00 AM', 'isRead': true},
     {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
+    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
+    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
+    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
+    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
+    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
+    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
+    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
   ];
 
   int unreadNotifications = 0;
@@ -24,106 +31,84 @@ class NotificationsPage extends StatelessWidget {
       }
     }
     return Scaffold(
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(80),
+          child: SafeArea(
+            child: Container(
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 24, right: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Notifications',
+                          style: TextStyle(
+                              fontSize: 22,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.circle,
+                              color: Color(0xFF01016F),
+                              size: 8,
+                            ),
+                            const SizedBox(width: 4),
+                            Text('$unreadNotifications activate device',
+                                style: const TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w300,
+                                    fontFamily: 'Roboto',
+                                    letterSpacing: 0.01,
+                                    height: 0.5)),
+                          ],
+                        )
+                      ],
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        print('Clicked on menu icon');
+                      },
+                      icon: const Icon(
+                        Icons.menu,
+                        size: 30,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          )),
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 32, top: 60),
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+              child: SingleChildScrollView(
+            child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Notifications',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 24, height: 0.9),
+                  Column(
+                    children: notifications
+                        .map((noti) =>
+                            Text('${noti['cameraName']} - ${noti['time']}'))
+                        .toList(),
                   ),
-                  Text(
-                    '$unreadNotifications not read',
-                    style:
-                        const TextStyle(color: Color(0xFF666666), fontSize: 14),
-                  )
                 ],
               ),
             ),
-            Expanded(
-              // child: Center(
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: notifications
-                      .map((notification) => Padding(
-                          padding: const EdgeInsets.only(
-                              left: 32, right: 32, top: 12, bottom: 12),
-                          child: TouchableOpacity(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: const Color(0xFFCACACA), width: 1),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(8.0))),
-                              child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 12, right: 20, top: 12, bottom: 12),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(children: [
-                                        const Icon(
-                                          Icons.warning,
-                                          size: 60,
-                                          color: Color(0xFFF04826),
-                                        ),
-                                        const SizedBox(width: 12),
-                                        Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              const Text(
-                                                'FALL DETECTED!',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 16),
-                                              ),
-                                              Text(
-                                                  'at ${notification['cameraName']}',
-                                                  style: const TextStyle(
-                                                      fontSize: 14,
-                                                      color:
-                                                          Color(0xFF000000))),
-                                              Text(
-                                                notification['time'],
-                                                style: const TextStyle(
-                                                    fontSize: 14,
-                                                    color: Color(0xFF666666)),
-                                              )
-                                            ])
-                                      ]),
-                                      notification['isRead']
-                                          ? const Icon(
-                                              Icons.circle,
-                                              size: 12,
-                                              color: Color(0xFF39A7FF),
-                                            )
-                                          : const SizedBox()
-                                    ],
-                                  )),
-                            ),
-                            onTap: () {
-                              print('clicked');
-                            },
-                          )))
-                      .toList(),
-                ),
-              ),
-            )
-            // )
-          ]),
+          ))
+        ],
+      ),
     );
   }
 }
