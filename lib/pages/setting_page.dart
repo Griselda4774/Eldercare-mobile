@@ -1,7 +1,7 @@
+import 'package:eldercare/components/eldercare_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:eldercare/components/touchableopacity.dart';
 import 'package:eldercare/components/warning_alert.dart';
-import 'package:eldercare/pages/login_page.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
@@ -56,28 +56,29 @@ class SettingPage extends StatelessWidget {
                             barrierDismissible: false);
                       }),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: TouchableOpacity(
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            color: Color(0xFF39A7FF),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(8.0))),
-                        padding: const EdgeInsets.all(12),
-                        alignment: Alignment.center,
-                        child: const Text(
-                          'Logout',
-                          style: TextStyle(color: Color(0xffffffff)),
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const LoginPage()));
-                      }),
-                )
+                // Padding(
+                //   padding: const EdgeInsets.all(20),
+                //   child: TouchableOpacity(
+                //       child: Container(
+                //         decoration: const BoxDecoration(
+                //             color: Color(0xFF39A7FF),
+                //             borderRadius:
+                //                 BorderRadius.all(Radius.circular(8.0))),
+                //         padding: const EdgeInsets.all(12),
+                //         alignment: Alignment.center,
+                //         child: const Text(
+                //           'Logout',
+                //           style: TextStyle(color: Color(0xffffffff)),
+                //         ),
+                //       ),
+                //       onTap: () {
+                //         Navigator.pushReplacement(
+                //             context,
+                //             MaterialPageRoute(
+                //                 builder: (context) => const LoginPage()));
+                //       }),
+                // ),
+                const EldercareLogo(),
               ],
             ),
           ))
