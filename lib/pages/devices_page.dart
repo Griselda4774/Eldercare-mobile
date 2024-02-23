@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'package:eldercare/components/camera_widget.dart';
-import 'package:eldercare/components/touchableopacity.dart';
-import 'package:eldercare/components/video_player.dart';
+import 'package:eldercare/widgets/camera_widget.dart';
+import 'package:eldercare/widgets/touchableopacity.dart';
+import 'package:eldercare/widgets/video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:eldercare/components/clock_running.dart';
+import 'package:eldercare/widgets/clock_running.dart';
 // import 'package:base64/base64.dart';
 
 class DevicesPage extends StatelessWidget {
@@ -13,7 +13,7 @@ class DevicesPage extends StatelessWidget {
   final List devicesInfo = [
     {
       'name': 'Living Room',
-      'isOnline': true,
+      'isOnline': false,
       'imageURL': 'assets/images/dining_room.jpg'
     },
     {

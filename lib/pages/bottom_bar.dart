@@ -22,21 +22,21 @@ class _BottomBarPageState extends State<BottomBarPage> {
 
   final List _pages = [
     // devices page
-    DevicesPage(),
+    {'page': DevicesPage(), 'color': const Color(0xFF39A7FF)},
     // notifications page
-    NotificationsPage(),
+    {'page': NotificationsPage(), 'color': const Color(0xFFD8031C)},
     // settings page
-    const SettingPage(),
+    {'page': const SettingPage(), 'color': const Color(0xFF39A7FF)},
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: _pages[_selectedIndex],
+        body: _pages[_selectedIndex]['page'] as Widget,
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
           onTap: _navigateBottomBar,
-          selectedItemColor: const Color(0xFF39A7FF),
+          selectedItemColor: _pages[_selectedIndex]['color'] as Color,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.video_camera_back),

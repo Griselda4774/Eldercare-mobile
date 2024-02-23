@@ -1,5 +1,6 @@
+import 'package:eldercare/widgets/noti_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:eldercare/components/touchableopacity.dart';
+import 'package:eldercare/widgets/touchableopacity.dart';
 
 class NotificationsPage extends StatelessWidget {
   NotificationsPage({super.key});
@@ -12,12 +13,6 @@ class NotificationsPage extends StatelessWidget {
     {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
     {'cameraName': 'Living Room', 'time': '10:00 AM', 'isRead': false},
     {'cameraName': 'Bedroom', 'time': '11:00 AM', 'isRead': true},
-    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
-    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
-    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
-    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
-    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
-    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
     {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
     {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
   ];
@@ -57,11 +52,11 @@ class NotificationsPage extends StatelessWidget {
                           children: [
                             const Icon(
                               Icons.circle,
-                              color: Color(0xFF01016F),
+                              color: Color(0xFFD8031C),
                               size: 8,
                             ),
                             const SizedBox(width: 4),
-                            Text('$unreadNotifications activate device',
+                            Text('$unreadNotifications Notifications unread',
                                 style: const TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w300,
@@ -72,15 +67,6 @@ class NotificationsPage extends StatelessWidget {
                         )
                       ],
                     ),
-                    IconButton(
-                      onPressed: () {
-                        print('Clicked on menu icon');
-                      },
-                      icon: const Icon(
-                        Icons.menu,
-                        size: 30,
-                      ),
-                    )
                   ],
                 ),
               ),
@@ -97,10 +83,36 @@ class NotificationsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 32),
+                    child: Text('Today',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'Lato',
+                            fontWeight: FontWeight.bold)),
+                  ),
                   Column(
                     children: notifications
-                        .map((noti) =>
-                            Text('${noti['cameraName']} - ${noti['time']}'))
+                        .map((noti) => NotiWidget(
+                            cameraName: noti['cameraName'],
+                            time: noti['time'],
+                            isRead: noti['isRead']))
+                        .toList(),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 32, top: 16, bottom: 8),
+                    child: Text('Yesterday',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'Lato',
+                            fontWeight: FontWeight.bold)),
+                  ),
+                  Column(
+                    children: notifications
+                        .map((noti) => NotiWidget(
+                            cameraName: noti['cameraName'],
+                            time: noti['time'],
+                            isRead: noti['isRead']))
                         .toList(),
                   ),
                 ],

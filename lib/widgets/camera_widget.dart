@@ -1,4 +1,4 @@
-import 'package:eldercare/components/touchableopacity.dart';
+import 'package:eldercare/widgets/touchableopacity.dart';
 import 'package:flutter/material.dart';
 
 class CameraWidget extends StatefulWidget {
@@ -16,6 +16,7 @@ class CameraWidget extends StatefulWidget {
 }
 
 class _CameraWidgetState extends State<CameraWidget> {
+  bool isOnlineState = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,7 +36,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                     fontSize: 16,
                     fontWeight: FontWeight.bold),
               ),
-              widget.isOnline
+              isOnlineState
                   ? const Row(
                       children: [
                         Icon(
@@ -65,7 +66,7 @@ class _CameraWidgetState extends State<CameraWidget> {
               alignment: Alignment.center,
               children: [
                 Opacity(
-                  opacity: widget.isOnline ? 1.0 : 0.6,
+                  opacity: isOnlineState ? 1.0 : 0.6,
                   child: Container(
                     clipBehavior: Clip.hardEdge,
                     decoration: const BoxDecoration(
@@ -76,7 +77,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                     ),
                   ),
                 ),
-                !widget.isOnline
+                !isOnlineState
                     ? TouchableOpacity(
                         child: Container(
                           width: 60,
@@ -90,9 +91,9 @@ class _CameraWidgetState extends State<CameraWidget> {
                           child: const Icon(Icons.play_arrow_rounded,
                               size: 48, color: Colors.white),
                         ),
-                        onTap: () {
-                          print('live camera');
-                        })
+                        onTap: () => setState(() {
+                              isOnlineState = true;
+                            }))
                     : const SizedBox()
               ],
             ),
