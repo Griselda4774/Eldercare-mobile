@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:eldercare/pages/bottom_bar.dart';
-import 'package:eldercare/pages/devices_page.dart';
-import 'package:eldercare/pages/login_page.dart';
 import 'package:eldercare/pages/notifications_page.dart';
 import 'package:eldercare/pages/setting_page.dart';
 
@@ -16,9 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
+      home: const BottomBarPage(),
       routes: {
-        '/login': (context) => const LoginPage(),
         '/devices': (context) => const BottomBarPage(),
         '/notifications': (context) => NotificationsPage(),
         '/settings': (context) => const SettingPage(),
