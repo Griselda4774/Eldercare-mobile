@@ -8,40 +8,40 @@ import 'package:eldercare/components/clock_running.dart';
 class DevicesPage extends StatelessWidget {
   DevicesPage({super.key});
 
-  final List _devicesInfo = [
+  final List devicesInfo = [
     {'name': 'Living Room'},
     {'name': 'Bedroom'},
     {'name': 'Kitchen'},
   ];
-  final List<Widget> _devicesList = [];
-  Future<String?> convertImageToBase64(String imageUrl) async {
-    final response = await http.get(Uri.parse(imageUrl));
-    if (response.statusCode == 200) {
-      final bytes = response.bodyBytes;
-      final base64String = base64Encode(bytes);
-      return base64String;
-    } else {
-      throw Exception('Failed to load image');
-    }
-  }
+  // final List<Widget> _devicesList = [];
+  // Future<String?> convertImageToBase64(String imageUrl) async {
+  //   final response = await http.get(Uri.parse(imageUrl));
+  //   if (response.statusCode == 200) {
+  //     final bytes = response.bodyBytes;
+  //     final base64String = base64Encode(bytes);
+  //     return base64String;
+  //   } else {
+  //     throw Exception('Failed to load image');
+  //   }
+  // }
 
-  String? _base64Image;
+  // String? _base64Image;
 
   @override
   Widget build(BuildContext context) {
-    for (var device in _devicesInfo) {
-      _devicesList.add(ListTile(
-        leading: const Icon(Icons.tv),
-        title: Text(device['name']),
-        subtitle: const Text('Smart TV'),
-        trailing: const Icon(Icons.more_vert),
-      ));
-    }
+    // for (var device in _devicesInfo) {
+    //   _devicesList.add(ListTile(
+    //     leading: const Icon(Icons.tv),
+    //     title: Text(device['name']),
+    //     subtitle: const Text('Smart TV'),
+    //     trailing: const Icon(Icons.more_vert),
+    //   ));
+    // }
 
-    convertImageToBase64(
-            'https://getsafeandsound.com/wp-content/uploads/2018/08/maxresdefault.jpg')
-        .then((value) => {_base64Image = value});
-    print('base64: $_base64Image');
+    // convertImageToBase64(
+    //         'https://getsafeandsound.com/wp-content/uploads/2018/08/maxresdefault.jpg')
+    //     .then((value) => {_base64Image = value});
+    // print('base64: $_base64Image');
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -66,26 +66,32 @@ class DevicesPage extends StatelessWidget {
             ),
           ),
           Expanded(
-              child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Stack(
-                    children: [
-                      Container(
-                          clipBehavior: Clip.hardEdge,
-                          decoration: const BoxDecoration(
-                              color: Color(0xFF39A7FF),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8.0))),
-                          child: const VideoPlayerWidget()),
-                    ],
-                  )
-                ],
-              ),
+              child: SingleChildScrollView(
+            child: Column(
+              children: devicesInfo
+                  .map((device) => Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Stack(
+                              children: [
+                                Container(
+                                    clipBehavior: Clip.hardEdge,
+                                    decoration: const BoxDecoration(
+                                        color: Color(0xFF39A7FF),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8.0))),
+                                    child: VideoPlayerWidget(
+                                      cameraName: device['name'].toString(),
+                                    )),
+                              ],
+                            )
+                          ],
+                        ),
+                      ))
+                  .toList(),
             ),
           ))
         ],

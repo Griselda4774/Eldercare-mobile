@@ -6,7 +6,8 @@ import 'package:eldercare/components/clock_running.dart';
 import 'package:eldercare/components/warning_alert.dart';
 
 class VideoPlayerWidget extends StatefulWidget {
-  const VideoPlayerWidget({super.key});
+  const VideoPlayerWidget({super.key, required this.cameraName});
+  final String cameraName;
 
   @override
   State<VideoPlayerWidget> createState() => _VideoPlayerState();
@@ -29,14 +30,14 @@ class _VideoPlayerState extends State<VideoPlayerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (_videoPlayerController.value.isInitialized) {
-      Timer(const Duration(seconds: 3), () {
-        showDialog(
-            context: context,
-            builder: (_) => const WarningAlert(cameraName: 'Camera 1'),
-            barrierDismissible: false);
-      });
-    }
+    // if (_videoPlayerController.value.isInitialized) {
+    //   Timer(const Duration(seconds: 3), () {
+    //     showDialog(
+    //         context: context,
+    //         builder: (_) => const WarningAlert(cameraName: 'Camera 1'),
+    //         barrierDismissible: false);
+    //   });
+    // }
     return Container(
       child: _videoPlayerController.value.isInitialized
           ? Stack(
@@ -53,7 +54,7 @@ class _VideoPlayerState extends State<VideoPlayerWidget> {
                       Stack(
                         children: [
                           Text(
-                            'Camera 1',
+                            super.widget.cameraName.toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
@@ -62,9 +63,9 @@ class _VideoPlayerState extends State<VideoPlayerWidget> {
                                   ..strokeWidth = 4
                                   ..color = Colors.black),
                           ),
-                          const Text(
-                            'Camera 1',
-                            style: TextStyle(
+                          Text(
+                            super.widget.cameraName.toString(),
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
                                 color: Colors.white),
