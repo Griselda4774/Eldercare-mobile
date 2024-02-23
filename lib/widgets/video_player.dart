@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'package:eldercare/components/clock_running.dart';
-import 'package:eldercare/components/warning_alert.dart';
+import 'package:eldercare/widgets/clock_running.dart';
+import 'package:eldercare/widgets/warning_alert.dart';
 
 class VideoPlayerWidget extends StatefulWidget {
   const VideoPlayerWidget({super.key, required this.cameraName});

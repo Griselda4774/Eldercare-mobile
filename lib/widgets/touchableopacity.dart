@@ -25,7 +25,7 @@ class _TouchableOpacityState extends State<TouchableOpacity> {
         _currentOpacity = 1.0;
       }),
       child: GestureDetector(
-        onTap: widget.onTap as void Function()?,
+        onTap: widget.onTap as Function(),
         child: Opacity(
           opacity: _currentOpacity,
           child: widget.child,

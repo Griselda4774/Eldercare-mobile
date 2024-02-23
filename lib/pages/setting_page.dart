@@ -1,7 +1,7 @@
-import 'package:eldercare/components/eldercare_logo.dart';
+import 'package:eldercare/widgets/eldercare_logo.dart';
 import 'package:flutter/material.dart';
-import 'package:eldercare/components/touchableopacity.dart';
-import 'package:eldercare/components/warning_alert.dart';
+import 'package:eldercare/widgets/touchableopacity.dart';
+import 'package:eldercare/widgets/warning_alert.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
