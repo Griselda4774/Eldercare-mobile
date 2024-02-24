@@ -5,16 +5,46 @@ import 'package:eldercare/widgets/touchableopacity.dart';
 class NotificationsPage extends StatelessWidget {
   NotificationsPage({super.key});
   final List notifications = [
-    {'cameraName': 'Living Room', 'time': '10:00 AM', 'isRead': false},
-    {'cameraName': 'Bedroom', 'time': '11:00 AM', 'isRead': true},
-    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
-    {'cameraName': 'Living Room', 'time': '10:00 AM', 'isRead': false},
-    {'cameraName': 'Bedroom', 'time': '11:00 AM', 'isRead': true},
-    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
-    {'cameraName': 'Living Room', 'time': '10:00 AM', 'isRead': false},
-    {'cameraName': 'Bedroom', 'time': '11:00 AM', 'isRead': true},
-    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
-    {'cameraName': 'Kitchen', 'time': '12:00 PM', 'isRead': false},
+    {
+      'cameraName': 'Living Room',
+      'time': DateTime.now().toString(),
+      'isRead': false
+    },
+    {
+      'cameraName': 'Bedroom',
+      'time': DateTime.now().toString(),
+      'isRead': true
+    },
+    {
+      'cameraName': 'Kitchen',
+      'time': DateTime.now().toString(),
+      'isRead': false
+    },
+    {
+      'cameraName': 'Living Room',
+      'time': DateTime.now().toString(),
+      'isRead': false
+    },
+    {
+      'cameraName': 'Bedroom',
+      'time': DateTime.now().toString(),
+      'isRead': true
+    },
+    {
+      'cameraName': 'Kitchen',
+      'time': DateTime.now().toString(),
+      'isRead': false
+    },
+    {
+      'cameraName': 'Living Room',
+      'time': DateTime.now().toString(),
+      'isRead': false
+    },
+    {
+      'cameraName': 'Bedroom',
+      'time': DateTime.now().toString(),
+      'isRead': true
+    },
   ];
 
   int unreadNotifications = 0;

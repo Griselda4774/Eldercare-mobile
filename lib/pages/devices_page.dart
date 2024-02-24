@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:eldercare/widgets/camera_widget.dart';
+import 'package:eldercare/widgets/image_widget.dart';
 import 'package:eldercare/widgets/touchableopacity.dart';
 import 'package:eldercare/widgets/video_player_widget.dart';
 import 'package:flutter/material.dart';
@@ -14,22 +15,22 @@ class DevicesPage extends StatelessWidget {
     {
       'name': 'Living Room',
       'isOnline': false,
-      'imageURL': 'assets/images/dining_room.jpg'
+      'imageURL': 'assets/images/living_room.jpg'
     },
     {
       'name': 'Bedroom',
       'isOnline': false,
-      'imageURL': 'assets/images/living_room.jpg'
+      'imageURL': 'assets/images/bedroom.jpg'
     },
     {
       'name': 'Kitchen',
       'isOnline': false,
-      'imageURL': 'assets/images/living_room.jpg'
+      'imageURL': 'assets/images/kitchen.jpg'
     },
     {
-      'name': 'Bathroom',
+      'name': 'Dining Room',
       'isOnline': false,
-      'imageURL': 'assets/images/living_room.jpg'
+      'imageURL': 'assets/images/dining_room.jpg'
     },
   ];
   int activeDevice = 0;
@@ -131,9 +132,8 @@ class DevicesPage extends StatelessWidget {
                           .map((device) => CameraWidget(
                               cameraName: device['name'].toString(),
                               isOnline: device['isOnline'] as bool,
-                              videoWidget: Image.asset(
-                                device['imageURL'].toString(),
-                                fit: BoxFit.cover,
+                              videoWidget: ImageWidget(
+                                imagePath: device['imageURL'],
                               )))
                           .toList()),
                   Padding(
