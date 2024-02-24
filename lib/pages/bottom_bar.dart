@@ -22,7 +22,7 @@ class _BottomBarPageState extends State<BottomBarPage> {
 
   final List _pages = [
     // devices page
-    {'page': DevicesPage(), 'color': const Color(0xFF39A7FF)},
+    {'page': DevicesPage(), 'color': const Color(0xFF9FCBEE)},
     // notifications page
     {'page': NotificationsPage(), 'color': const Color(0xFFD8031C)},
     // settings page

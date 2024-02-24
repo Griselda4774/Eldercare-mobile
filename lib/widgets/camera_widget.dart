@@ -1,15 +1,17 @@
+import 'package:eldercare/widgets/chewie_video_player_widget.dart';
 import 'package:eldercare/widgets/touchableopacity.dart';
+import 'package:eldercare/widgets/video_player_widget.dart';
 import 'package:flutter/material.dart';
 
 class CameraWidget extends StatefulWidget {
   const CameraWidget(
       {super.key,
       required this.cameraName,
-      required this.cameraURL,
-      required this.isOnline});
+      required this.isOnline,
+      this.videoWidget});
   final String cameraName;
-  final String cameraURL;
   final bool isOnline;
+  final Widget? videoWidget;
 
   @override
   State<CameraWidget> createState() => _CameraWidgetState();
@@ -19,6 +21,9 @@ class _CameraWidgetState extends State<CameraWidget> {
   bool isOnlineState = false;
   @override
   Widget build(BuildContext context) {
+    if (widget.isOnline) {
+      isOnlineState = true;
+    }
     return Padding(
       padding: const EdgeInsets.only(left: 32, right: 32, top: 8, bottom: 16),
       child: Column(
@@ -68,14 +73,11 @@ class _CameraWidgetState extends State<CameraWidget> {
                 Opacity(
                   opacity: isOnlineState ? 1.0 : 0.6,
                   child: Container(
-                    clipBehavior: Clip.hardEdge,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(8.5)),
-                    ),
-                    child: Image(
-                      image: AssetImage(widget.cameraURL.toString()),
-                    ),
-                  ),
+                      clipBehavior: Clip.hardEdge,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(8.5)),
+                      ),
+                      child: widget.videoWidget ?? const SizedBox()),
                 ),
                 !isOnlineState
                     ? TouchableOpacity(
@@ -87,7 +89,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(40)),
                               border: Border.all(
-                                  color: const Color(0xFF9FCBEE), width: 1.5)),
+                                  color: const Color(0xFF9FCBEE), width: 2)),
                           child: const Icon(Icons.play_arrow_rounded,
                               size: 48, color: Colors.white),
                         ),

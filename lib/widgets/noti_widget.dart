@@ -16,7 +16,7 @@ class NotiWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TouchableOpacity(
       onTap: () {
-        print('Notification tapped');
+        Navigator.pushNamed(context, '/notificationsdetail');
       },
       child: Padding(
         padding: const EdgeInsets.only(left: 32, right: 32, top: 8, bottom: 16),
@@ -36,7 +36,7 @@ class NotiWidget extends StatelessWidget {
                         color: Color(0xFFD8031C),
                         size: 6,
                       ),
-                const SizedBox(width: 12),
+                const SizedBox(width: 24),
                 Image.asset(
                   'assets/images/noti_image.jpg',
                   height: 40,
