@@ -1,10 +1,13 @@
 import 'package:eldercare/widgets/camera_widget.dart';
+import 'package:eldercare/widgets/image_widget.dart';
 import 'package:eldercare/widgets/touchableopacity.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NotiDetailPage extends StatefulWidget {
-  const NotiDetailPage({super.key});
-
+  const NotiDetailPage({super.key, this.cameraName, this.time});
+  final String? cameraName;
+  final String? time;
   @override
   State<NotiDetailPage> createState() => _NotiDetailPageState();
 }
@@ -66,20 +69,32 @@ class _NotiDetailPageState extends State<NotiDetailPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              'Living Room',
-                              style: TextStyle(
+                              widget.cameraName ?? 'Camera 1',
+                              style: const TextStyle(
                                   fontFamily: 'Lato',
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 6),
+                        const SizedBox(height: 2),
+                        Text(
+                          DateFormat('hh:mm:ss EEE, MMM dd, yyyy').format(
+                              DateTime.parse(widget.time != null
+                                  ? widget.time!
+                                  : DateTime.now().toString())),
+                          style: const TextStyle(
+                              fontFamily: 'Lato',
+                              fontSize: 10,
+                              color: Color(0xFFAAAAAA),
+                              fontWeight: FontWeight.w400),
+                        ),
+                        const SizedBox(height: 4),
                         Container(
                           clipBehavior: Clip.hardEdge,
                           decoration: BoxDecoration(
@@ -101,9 +116,9 @@ class _NotiDetailPageState extends State<NotiDetailPage> {
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(8.5)),
                                     ),
-                                    child: Image.asset(
-                                      'assets/images/living_room.jpg',
-                                      fit: BoxFit.cover,
+                                    child: const ImageWidget(
+                                      imagePath:
+                                          'assets/images/living_room.jpg',
                                     )),
                               ),
                               !isPlayState
@@ -132,6 +147,59 @@ class _NotiDetailPageState extends State<NotiDetailPage> {
                             ],
                           ),
                         )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 32, right: 32),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Row(
+                          children: [
+                            Text(
+                              'Danger level: ',
+                              style: TextStyle(
+                                  fontFamily: 'Lato',
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                  color: Color(0xFFAAAAAA)),
+                            ),
+                            Text(
+                              'High',
+                              style: TextStyle(
+                                  fontFamily: 'Lato',
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                  color: Color(0xFFFF6B00)),
+                            )
+                          ],
+                        ),
+                        Text(
+                          'Time: ${DateFormat('hh:mm:ss EEE, MMM dd, yyyy').format(DateTime.parse(widget.time != null ? widget.time! : DateTime.now().toString()))}',
+                          style: const TextStyle(
+                              fontFamily: 'Lato',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: Color(0xFFAAAAAA)),
+                        ),
+                        const Text(
+                          'Device: Elder-C001',
+                          style: TextStyle(
+                              fontFamily: 'Lato',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: Color(0xFFAAAAAA)),
+                        ),
+                        const Text(
+                          'Duration: 10 seconds',
+                          style: TextStyle(
+                              fontFamily: 'Lato',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: Color(0xFFAAAAAA)),
+                        ),
                       ],
                     ),
                   ),
@@ -165,13 +233,13 @@ class _NotiDetailPageState extends State<NotiDetailPage> {
                         const SizedBox(height: 6),
                         Container(
                           clipBehavior: Clip.hardEdge,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius:
-                                const BorderRadius.all(Radius.circular(10.0)),
-                            border: Border.all(
-                                color:
-                                    const Color(0xFFD8031C).withOpacity(0.97),
-                                width: 1.5),
+                                BorderRadius.all(Radius.circular(10.0)),
+                            // border: Border.all(
+                            //     color:
+                            //         const Color(0xFFD8031C).withOpacity(0.97),
+                            //     width: 1.5),
                           ),
                           child: Stack(
                             alignment: Alignment.center,
@@ -184,16 +252,39 @@ class _NotiDetailPageState extends State<NotiDetailPage> {
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(8.5)),
                                     ),
-                                    child: Image.asset(
-                                      'assets/images/living_room.jpg',
-                                      fit: BoxFit.cover,
-                                    ),
+                                    child: const ImageWidget(
+                                        imagePath:
+                                            'assets/images/living_room.jpg'),
                                   )),
                             ],
                           ),
                         )
                       ],
                     ),
+                  ),
+                  Center(
+                    child: TouchableOpacity(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color(0xFFD8031C),
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.only(
+                                top: 12, bottom: 12, left: 24, right: 24),
+                            child: Text(
+                              'Call emergency',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'Lato',
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                          ),
+                        ),
+                        onTap: () {
+                          print('Call Emergency');
+                        }),
                   )
                 ],
               ),
