@@ -1,3 +1,4 @@
+import 'package:eldercare/pages/noti_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:eldercare/pages/bottom_bar.dart';
 import 'package:eldercare/pages/notifications_page.dart';
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
         '/devices': (context) => const BottomBarPage(),
         '/notifications': (context) => NotificationsPage(),
         '/settings': (context) => const SettingPage(),
-        '/bottombar': (context) => const BottomBarPage()
+        '/bottombar': (context) => const BottomBarPage(),
+        '/notificationsdetail': (context) => const NotiDetailPage(),
       },
     );
   }

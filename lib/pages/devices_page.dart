@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:eldercare/widgets/camera_widget.dart';
 import 'package:eldercare/widgets/touchableopacity.dart';
-import 'package:eldercare/widgets/video_player.dart';
+import 'package:eldercare/widgets/video_player_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:eldercare/widgets/clock_running.dart';
@@ -127,14 +127,15 @@ class DevicesPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
-                    children: devicesInfo
-                        .map((device) => CameraWidget(
+                      children: devicesInfo
+                          .map((device) => CameraWidget(
                               cameraName: device['name'].toString(),
-                              cameraURL: device['imageURL'].toString(),
                               isOnline: device['isOnline'] as bool,
-                            ))
-                        .toList(),
-                  ),
+                              videoWidget: Image.asset(
+                                device['imageURL'].toString(),
+                                fit: BoxFit.cover,
+                              )))
+                          .toList()),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 16),
                     child: TouchableOpacity(
