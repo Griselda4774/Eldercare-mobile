@@ -1,6 +1,6 @@
-import 'package:eldercare/widgets/camera_widget.dart';
 import 'package:eldercare/widgets/image_widget.dart';
 import 'package:eldercare/widgets/touchableopacity.dart';
+import 'package:eldercare/widgets/video_player_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -105,45 +105,10 @@ class _NotiDetailPageState extends State<NotiDetailPage> {
                                     const Color(0xFFD8031C).withOpacity(0.97),
                                 width: 1.5),
                           ),
-                          child: Stack(
+                          child: const Stack(
                             alignment: Alignment.center,
                             children: [
-                              Opacity(
-                                opacity: isPlayState ? 1.0 : 0.6,
-                                child: Container(
-                                    clipBehavior: Clip.hardEdge,
-                                    decoration: const BoxDecoration(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(8.5)),
-                                    ),
-                                    child: const ImageWidget(
-                                      imagePath:
-                                          'assets/images/living_room.jpg',
-                                    )),
-                              ),
-                              !isPlayState
-                                  ? TouchableOpacity(
-                                      child: Container(
-                                        width: 60,
-                                        height: 60,
-                                        decoration: BoxDecoration(
-                                            color: const Color(0xFFD9D9D9)
-                                                .withOpacity(0.9),
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(40)),
-                                            border: Border.all(
-                                                color: const Color(0xFFD8031C),
-                                                width: 2)),
-                                        child: const Icon(
-                                            Icons.play_arrow_rounded,
-                                            size: 48,
-                                            color: Colors.white),
-                                      ),
-                                      onTap: () => setState(() {
-                                            isPlayState = true;
-                                          }))
-                                  : const SizedBox()
+                              VideoPlayerWidget(),
                             ],
                           ),
                         )

@@ -1,11 +1,10 @@
-import 'dart:convert';
+import 'dart:async';
+import 'package:eldercare/widgets/camera_display_widget.dart';
 import 'package:eldercare/widgets/camera_widget.dart';
 import 'package:eldercare/widgets/image_widget.dart';
 import 'package:eldercare/widgets/touchableopacity.dart';
-import 'package:eldercare/widgets/video_player_widget.dart';
+import 'package:eldercare/widgets/warning_alert.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:eldercare/widgets/clock_running.dart';
 // import 'package:base64/base64.dart';
 
 class DevicesPage extends StatelessWidget {
@@ -34,6 +33,8 @@ class DevicesPage extends StatelessWidget {
     },
   ];
   int activeDevice = 0;
+
+  void showWarning() {}
   // final List<Widget> _devicesList = [];
   // Future<String?> convertImageToBase64(String imageUrl) async {
   //   final response = await http.get(Uri.parse(imageUrl));
@@ -130,11 +131,24 @@ class DevicesPage extends StatelessWidget {
                   Column(
                       children: devicesInfo
                           .map((device) => CameraWidget(
-                              cameraName: device['name'].toString(),
-                              isOnline: device['isOnline'] as bool,
-                              videoWidget: ImageWidget(
-                                imagePath: device['imageURL'],
-                              )))
+                                cameraName: device['name'].toString(),
+                                isOnline: device['isOnline'] as bool,
+                                imageWidget: ImageWidget(
+                                  imagePath: device['imageURL'],
+                                ),
+                                videoWidget: CameraDisplayWidget(
+                                  showWarning: () {
+                                    Timer(const Duration(milliseconds: 4500),
+                                        () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (_) => const WarningAlert(
+                                              cameraName: 'Living Room'),
+                                          barrierDismissible: false);
+                                    });
+                                  },
+                                ),
+                              ))
                           .toList()),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 16),

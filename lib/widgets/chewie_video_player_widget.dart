@@ -3,8 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class ChewieVideoPlayerWidget extends StatefulWidget {
-  const ChewieVideoPlayerWidget({super.key, required this.isPlay});
+  const ChewieVideoPlayerWidget(
+      {super.key,
+      required this.isPlay,
+      required this.showControls,
+      required this.videoURL});
   final bool isPlay;
+  final bool showControls;
+  final String videoURL;
 
   @override
   State<ChewieVideoPlayerWidget> createState() =>
@@ -27,13 +33,13 @@ class _ChewieVideoPlayerWidgetState extends State<ChewieVideoPlayerWidget> {
 
   void _initPlayer() async {
     videoPlayerController =
-        VideoPlayerController.asset('assets/videos/test_video.mp4');
+        VideoPlayerController.asset('assets/videos/fall_source.mp4');
     await videoPlayerController.initialize();
     chewieController = ChewieController(
       videoPlayerController: videoPlayerController,
       autoPlay: isPlayState,
       looping: true,
-      showControls: false,
+      showControls: widget.showControls,
     );
   }
 

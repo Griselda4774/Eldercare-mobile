@@ -31,12 +31,13 @@ dependencies:
   flutter:
     sdk: flutter
   image: ^4.1.0
-  http: ^1.2.0
+  http: ^0.13.0
   base64: ^1.0.0
   intl: ^0.19.0
   video_player: ^2.8.2
   flick_video_player: ^0.7.0
   chewie: ^1.5.0
+  eventsource: ^0.4.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -72,6 +73,7 @@ flutter:
     - assets/videos/test_video.mp4
     - assets/images/kitchen.jpg
     - assets/images/bedroom.jpg
+    - assets/videos/fall_source.mp4
 
   fonts:
     - family: Roboto
