@@ -6,6 +6,10 @@ ElderCare is a mobile application integrated with Home Camera, designed for elde
 
 **Video:** [Youtube](https://www.youtube.com/watch?v=dkdzTnIheRg)
 
+## Fall detection model:
+
+**Model**: [GitHub](https://github.com/Chirox03/Fall-detection-module.git)
+
 ## Getting Started
 
 To run any Android application built with Flutter you need to configure the enviroments in your machine, you can do this following the the tutorial provided by Google in [Flutter website](https://flutter.dev/docs/get-started/install)
