@@ -17,7 +17,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
     flickManager = FlickManager(
       autoPlay: false,
       videoPlayerController:
-          VideoPlayerController.asset('assets/videos/source.mp4'),
+          VideoPlayerController.asset('assets/videos/fall_source.mp4'),
     );
   }
 

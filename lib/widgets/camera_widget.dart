@@ -1,6 +1,4 @@
-import 'package:eldercare/widgets/chewie_video_player_widget.dart';
 import 'package:eldercare/widgets/touchableopacity.dart';
-import 'package:eldercare/widgets/video_player_widget.dart';
 import 'package:flutter/material.dart';
 
 class CameraWidget extends StatefulWidget {
@@ -8,10 +6,12 @@ class CameraWidget extends StatefulWidget {
       {super.key,
       required this.cameraName,
       required this.isOnline,
-      this.videoWidget});
+      this.videoWidget,
+      this.imageWidget});
   final String cameraName;
   final bool isOnline;
   final Widget? videoWidget;
+  final Widget? imageWidget;
 
   @override
   State<CameraWidget> createState() => _CameraWidgetState();
@@ -70,15 +70,18 @@ class _CameraWidgetState extends State<CameraWidget> {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                Opacity(
-                  opacity: isOnlineState ? 1.0 : 0.6,
-                  child: Container(
-                      clipBehavior: Clip.hardEdge,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(8.5)),
-                      ),
-                      child: widget.videoWidget ?? const SizedBox()),
-                ),
+                !isOnlineState
+                    ? Opacity(
+                        opacity: isOnlineState ? 1.0 : 0.6,
+                        child: Container(
+                            clipBehavior: Clip.hardEdge,
+                            decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.5)),
+                            ),
+                            child: widget.imageWidget ?? const SizedBox()),
+                      )
+                    : widget.videoWidget ?? const SizedBox(),
                 !isOnlineState
                     ? TouchableOpacity(
                         child: Container(

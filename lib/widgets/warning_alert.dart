@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../pages/noti_detail_page.dart';
 
 class WarningAlert extends StatelessWidget {
   const WarningAlert({super.key, required this.cameraName});
@@ -45,6 +46,12 @@ class WarningAlert extends StatelessWidget {
         TextButton(
             onPressed: () {
               Navigator.of(context).pop();
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => NotiDetailPage(
+                          time: DateTime.now().toString(),
+                          cameraName: cameraName)));
             },
             child: const Text(
               'View details',

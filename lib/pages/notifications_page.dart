@@ -1,6 +1,5 @@
 import 'package:eldercare/widgets/noti_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:eldercare/widgets/touchableopacity.dart';
 
 class NotificationsPage extends StatelessWidget {
   NotificationsPage({super.key});
